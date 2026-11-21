@@ -13,9 +13,7 @@ const permitidos = (process.env.ALLOWED_ORIGIN || "*")
   .filter(Boolean);
 app.use(
   cors({
-    origin: permitidos.includes("https://surphjab-frontend.vercel.app")
-      ? "*"
-      : permitidos,
+    origin: permitidos.includes("*") ? "*" : permitidos,
   }),
 );
 app.use(express.json({ limit: "10kb" }));
