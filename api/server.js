@@ -11,7 +11,13 @@ const permitidos = (process.env.ALLOWED_ORIGIN || "*")
   .split(",")
   .map((s) => s.trim())
   .filter(Boolean);
-app.use(cors({ origin: permitidos.includes("*") ? "*" : permitidos }));
+app.use(
+  cors({
+    origin: permitidos.includes("https://surphjab-frontend.vercel.app")
+      ? "*"
+      : permitidos,
+  }),
+);
 app.use(express.json({ limit: "10kb" }));
 
 // Datos en memoria: se pierden al reiniciar (en Render gratis, tambien al dormirse).
